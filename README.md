@@ -3,15 +3,17 @@
 
 
 ## Project Overview
-This project demonstrates the security differences between FTP and SFTP by capturing and analyzing network traffic. The goal is to show how FTP transmits data in plaintext, while SFTP encrypts data, protecting sensitive information from interception.
+This project demonstrates the security differences between FTP and SFTP by capturing and analyzing network traffic using Wireshark.
+The goal is to highlight how FTP transmits sensitive information in plaintext, while SFTP protects data through encryption over SSH.
 
 
 
 ## Project Objectives
 - Capture FTP and SFTP traffic using Wireshark
-- Analyze how login credentials and file transfers are transmitted
-- Compare the security risks of FTP with the encrypted communication of SFTP
-- Demonstrate best practices for secure file transfer
+- Analyze how authentication and file transfer occur over the network
+- Identify security risks associated with FTP
+- Demonstrate how SFTP provides confidentiality and integrity
+- Reinforce best practices for secure file transfer
 
 
 
@@ -19,25 +21,27 @@ This project demonstrates the security differences between FTP and SFTP by captu
 - **Wireshark** – Network packet capture and analysis  
 - **Linux** – For setting up test environments  
 - **SFTP / FTP protocols** – Understanding secure vs insecure file transfers  
-- **SSH** – Underlying encryption for SFTP
+- **SSH** – Encryption mechanism used by SFTP
 
 
 
 ## Key Learnings
-- FTP sends credentials and files in plaintext, making it vulnerable to interception  
-- SFTP uses SSH encryption, ensuring confidentiality and integrity of transmitted data  
-- Real-world implication: Organizations should prefer SFTP over FTP for secure file transfers  
-- Hands-on experience with network traffic capture and analysis
+- FTP transmits usernames and passwords in plaintext, making them vulnerable to interception
+- FTP file transfers can be exposed if the data channel is captured
+- SFTP encrypts both authentication and data using an SSH tunnel  
+- Encrypted protocols significantly reduce the risk of credential theft and data leakage
+- Secure protocols like SFTP are preferred in real-world environments
 
 
 
-## How to Reproduce
-1. Set up a test environment with FTP and SFTP servers  
-2. Use Wireshark to capture packets while transferring files  
-3. Observe the difference:  
-   - FTP packets show plaintext usernames and passwords
-   - SFTP packets are encrypted and unreadable  
-4. Document findings and generate screenshots for reports
+## Methodology
+1. Configure FTP and SFTP services on a Linux system  
+2. Start packet capture in Wireshark
+3. Perform file transfers using FTP and SFTP clients 
+4. Analyze captured packets:  
+   - FTP control traffic reveals plaintext credentials
+   - SFTP traffic appears encrypted and unreadable  
+5. Capture screenshots and document observations
 
 
 ## 📝 Summary of Findings
@@ -60,5 +64,9 @@ This project demonstrates the security differences between FTP and SFTP by captu
 
 </div>
 
-**Figure 1:** FTP (left) shows plaintext credentials; SFTP (right) is encrypted.
+**Figure 1:** FTP traffic reveals readable commands and credentials, while SFTP traffic is fully encrypted.
+
+## Conclusion
+This project demonstrates why FTP is insecure by design and why SFTP is the preferred alternative for secure file transfer.
+Using encrypted protocols is critical for protecting sensitive data in modern networks.
 
